@@ -1,0 +1,31 @@
+.top-images .images-container {
+  margin-top: 0;
+}
+
+.tag-btn {
+  padding: 3px 14px !important;
+  display: flex;
+}
+
+.tag-btn i {
+  position: relative;
+  right: -10px;
+  top: -7px;
+}
+
+.tag-margin {
+  margin-left: 5px;
+}
+
+.tag-div {
+  width: 94%;
+  height: 40px;
+  display: flex;
+  overflow-x: scroll;
+}
+
+.tag-div::-webkit-scrollbar {
+  display: none;
+}
+
+

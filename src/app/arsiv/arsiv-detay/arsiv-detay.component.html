@@ -1,0 +1,209 @@
+<section class="image-decription-container">
+  <div class="container">
+    <div class="row">
+      <div class="span6">
+        <figure>
+          <img src="img/work/18.jpg" alt="img" />
+        </figure>
+      </div>
+      <div class="span6">
+        <div class="item-description">
+          <h5 class="title">File ID - #125487598</h5>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>Resolution</th>
+                <th>Prize</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <form action="">
+                    <label class="checkbox">
+                      <input type="checkbox" value="" />
+                      Thumbnail
+                    </label>
+                  </form>
+                </td>
+                <td>200x200</td>
+                <td>Free</td>
+              </tr>
+              <tr>
+                <td>
+                  <form action="">
+                    <label class="checkbox">
+                      <input type="checkbox" value="" />
+                      Small
+                    </label>
+                  </form>
+                </td>
+                <td>512x512</td>
+                <td>Free</td>
+              </tr>
+              <tr>
+                <td>
+                  <form action="">
+                    <label class="checkbox">
+                      <input type="checkbox" value="" />
+                      Medium
+                    </label>
+                  </form>
+                </td>
+                <td>1024x1024</td>
+                <td>$0.99</td>
+              </tr>
+              <tr>
+                <td>
+                  <form action="">
+                    <label class="checkbox">
+                      <input type="checkbox" value="" />
+                      Large
+                    </label>
+                  </form>
+                </td>
+                <td>2500x2500</td>
+                <td>$1.59</td>
+              </tr>
+              <tr>
+                <td>
+                  <form action="">
+                    <label class="checkbox">
+                      <input type="checkbox" value="" checked />
+                      XLarge
+                    </label>
+                  </form>
+                </td>
+                <td>4000x4000</td>
+                <td>$3.49</td>
+              </tr>
+              <tr>
+                <td>
+                  <form action="">
+                    <label class="checkbox">
+                      <input type="checkbox" value="" />
+                      XXLarge
+                    </label>
+                  </form>
+                </td>
+                <td>6000x6000</td>
+                <td>$9.99</td>
+              </tr>
+              <tr>
+                <td>
+                  <form action="">
+                    <label class="checkbox">
+                      <input type="checkbox" value="" />
+                      XXXLarge
+                    </label>
+                  </form>
+                </td>
+                <td>10,000x10,000</td>
+                <td>$19.99</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="item-license">
+            <h4 class="title">License Type</h4>
+            <form action="">
+              <label class="checkbox inline">
+                <input type="checkbox" id="inlineCheckbox1" value="option1" /> Free
+              </label>
+              <label class="checkbox inline">
+                <input type="checkbox" id="inlineCheckbox2" value="option2" checked /> Creative
+              </label>
+              <label class="checkbox inline">
+                <input type="checkbox" id="inlineCheckbox3" value="option3" /> Editorial
+              </label>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="image-actions">
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <div class="image-inner-actions">
+          <div class="row-fluid">
+            <div class="span6">
+              <ul class="unstyled inline share-links">
+                <li>
+                  <a href="#" class="btn btn-large"><i class="icon-heart icon-large"></i>&nbsp; Favorite</a>
+                </li>
+                <li>
+                  <a href="#" class="btn btn-large"
+                    ><i class="icon-envelope-alt icon-large"></i>&nbsp; Email to a Friend</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="span3">
+              <h4 class="title">Total - $3.49</h4>
+            </div>
+            <div class="span3">
+              <ul class="unstyled inline shopping-actions pull-right">
+                <li><a href="#" class="btn btn-large">Add to cart</a></li>
+                <li><a href="#" class="btn btn-primary btn-large">Checkout</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="top-images">
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <h4 class="title">Some similar Images</h4>
+      </div>
+    </div>
+    <div class="images-container v3">
+      <div class="row">
+        <cdk-virtual-scroll-viewport itemSize="100" class="arsiv-scrollbar">
+          <li *cdkVirtualFor="let arsivGorsel of arsivGorselDataSource">
+            <div *ngIf="arsivGorsel">
+              <div class="span3">
+                <figure class="top-img">
+                  <img class="arsiv-gorsel" src="assets/img/work/1.jpg" alt="img" />
+
+                  <figcaption class="img-meta">
+                    <div class="row-fluid">
+                      <div class="span8">
+                        <a href="#" class="img-id">#154895856</a>
+                        <a href="#" class="img-tags">{{ arsivGorsel.DosyaAd }}</a>
+                        <a href="#" class="img-tags">/ Textures</a>
+                      </div>
+                      <div class="span4">
+                        <div class="dropdown">
+                          <a href="#" class="btn download-btn dropdown-toggle" type="button" data-toggle="dropdown"
+                            ><i class="icon-download"></i
+                          ></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">1920 x 1080</a></li>
+                            <li><a href="#">2560 x 1440</a></li>
+                            <li><a href="#">3840 x 2160</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </figcaption>
+
+                  <div class="roll-over" (click)="gorselDetayGetir()"></div>
+                </figure>
+              </div>
+            </div>
+            <div *ngIf="!arsivGorsel">
+              Loading ...
+            </div>
+          </li>
+        </cdk-virtual-scroll-viewport>
+      </div>
+    </div>
+  </div>
+</section>
