@@ -1,11 +1,12 @@
-.arsiv-scrollbar {
-  margin-left: 2%;
-}
 .search-result-title {
   margin-left: 10%;
   margin-right: 10%;
 }
 .search-results {
+  margin-top: 35px;
   background: unset !important;
 }
 
+.portfolio-controllers-container {
+  float: right;
+}

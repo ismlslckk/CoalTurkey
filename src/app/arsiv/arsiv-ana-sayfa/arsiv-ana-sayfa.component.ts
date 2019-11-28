@@ -26,7 +26,8 @@ export class ArsivAnaSayfaComponent implements OnInit {
   gorselDetayDialogAc() {
     const arsivDetay = this.matDialog.open(ArsivDetayComponent, {
       height: '75%',
-      width: '75%'
+      width: '85%',
+      maxWidth: '85%'
     });
   }
 
