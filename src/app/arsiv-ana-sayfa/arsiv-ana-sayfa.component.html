@@ -1,0 +1,106 @@
+<section class="main-pictures-cotainer">
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <div class="content-text">
+          <h1 class="title">Download Thousands of pictures for Free</h1>
+          <h4 class="subtitle">
+            Stock p<span class="style-border"
+              >hotos, illustrations, video and music -handpicked by creatives all over th</span
+            >e world.
+          </h4>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span6 offset3">
+        <div class="search-form">
+          <form (submit)="etiketAraFormSubmit()">
+            <div class="input-append">
+              <input
+                class="span5 seachPlaceholder"
+                id="appendedInputButton"
+                type="text"
+                placeholder="Enter Keywords "
+                name="searchItems"
+                (keypress)="etiketAramaInputChanged($event)"
+                [(ngModel)]="etiketAramaParam"
+              />
+              <button class="btn" type="submit"><i class="icon-search icon-2x"></i></button>
+            </div>
+            <div class="tag-div">
+              <ng-container *ngFor="let etiket of etiketAramaParamArray; let i = index">
+                <button [ngClass]="{ 'tag-margin': i !== 0 }" class="btn tag-btn">
+                  {{ etiket }} <i class="icon-remove alert-danger" (click)="arrayEtiketSil(etiket)"></i>
+                </button>
+              </ng-container>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span12">
+        <div class="content-text v2">
+          <h4 class="subtitle"><strong>750,789,586</strong> free files &amp; counting.</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="top-images">
+  <div class="container">
+    <div class="images-container">
+      <div class="row" *ngIf="arsivGorselDataSource">
+        <cdk-virtual-scroll-viewport
+          itemSize="100"
+          class="arsiv-scrollbar"
+          (scrolledIndexChange)="sayfaDegistir($event)"
+        >
+          <li *cdkVirtualFor="let arsivGorsel of arsivGorselDataSource">
+            <div *ngIf="arsivGorsel">
+              <div class="span3">
+                <figure class="top-img" style="margin-top: 10px;">
+                  <img class="arsiv-gorsel" [src]="arsivGorsel.GorselUrl" alt="img" />
+
+                  <figcaption class="img-meta">
+                    <div class="row-fluid">
+                      <div class="span8">
+                        <a href="#" class="img-id">#154895856</a>
+                        <a href="#" class="img-tags" *ngIf="arsivGorsel[seciliDil]">{{
+                          arsivGorsel[seciliDil].GorselAd
+                        }}</a>
+                        <a href="#" class="img-tags">/ Textures</a>
+                      </div>
+                      <div class="span4">
+                        <div class="dropdown">
+                          <a
+                            href="#"
+                            class="btn download-btn dropdown-toggle f-right"
+                            type="button"
+                            data-toggle="dropdown"
+                            ><i class="icon-download"></i
+                          ></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">1920 x 1080</a></li>
+                            <li><a href="#">2560 x 1440</a></li>
+                            <li><a href="#">3840 x 2160</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </figcaption>
+
+                  <div class="roll-over" (click)="gorselDetayDialogAc(arsivGorsel)"></div>
+                </figure>
+              </div>
+            </div>
+            <div *ngIf="!arsivGorsel">
+              Loading ...
+            </div>
+          </li>
+        </cdk-virtual-scroll-viewport>
+      </div>
+    </div>
+  </div>
+</section>
