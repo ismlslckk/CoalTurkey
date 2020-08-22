@@ -11,7 +11,7 @@ export interface IEtiket {
   OrtakId?: number;
 }
 
-export interface IGorselGetirEtiket {
+export interface IEtiketList {
   EtiketOrtakIdList: number[];
   Sayfa: number;
   PasiflerideGetir: boolean;

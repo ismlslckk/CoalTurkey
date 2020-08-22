@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { IEtiketCokDilli } from '../modeller/ietiket';
+import { IEtiket, IEtiketCokDilli, IEtiketList } from '../modeller/ietiket';
 import { ArsivService } from '../servisler/arsiv.service';
 import { DilService } from '../servisler/dil.service';
 
@@ -15,25 +15,29 @@ export class HeaderComponent implements OnInit {
   etiketAramaParamArray: string[] = [];
   gorselEtiketler: IEtiketCokDilli[];
   videoEtiketler: IEtiketCokDilli[];
+  etiketler: IEtiket[];
+  etiketAlanlar = { text: 'Ad', value: 'OrtakId' };
   seciliDil: string;
 
   constructor(private arsivService: ArsivService, private dilService: DilService, private router: Router) {}
 
   ngOnInit() {
+    this.dilService.seciliDil.subscribe(seciliDil => {
+      this.seciliDil = seciliDil;
+    });
     this.arsivService.gorselEtiketleriGetir().subscribe(cevap => {
       if (cevap.Basarili) {
-        console.log(cevap.Veri);
         this.gorselEtiketler = cevap.Veri;
+        this.etiketler = cevap.Veri.map(x => x[this.seciliDil]);
+        this.arsivService.etiketler.next(cevap.Veri);
       }
     });
     this.arsivService.videoEtiketleriGetir().subscribe(cevap => {
       if (cevap.Basarili) {
-        console.log(cevap.Veri);
         this.videoEtiketler = cevap.Veri;
+        this.etiketler = cevap.Veri.map(x => x[this.seciliDil]);
+        this.arsivService.etiketler.next(cevap.Veri);
       }
-    });
-    this.dilService.seciliDil.subscribe(seciliDil => {
-      this.seciliDil = seciliDil;
     });
   }
 
@@ -61,5 +65,9 @@ export class HeaderComponent implements OnInit {
     localStorage.setItem('seciliDil', dil);
     this.dilService.seciliDil.next(dil);
     this.seciliDilButon.nativeElement.innerHTML = event.target.innerHTML;
+  }
+
+  seciliArsivTipDegistir(arsivTip: string) {
+    this.arsivService.seciliArsivTip.next(arsivTip);
   }
 }

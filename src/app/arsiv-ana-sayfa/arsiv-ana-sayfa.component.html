@@ -15,26 +15,34 @@
     <div class="row">
       <div class="span6 offset3">
         <div class="search-form">
-          <form (submit)="etiketAraFormSubmit()">
-            <div class="input-append">
-              <input
-                class="span5 seachPlaceholder"
-                id="appendedInputButton"
-                type="text"
-                placeholder="Enter Keywords "
-                name="searchItems"
-                (keypress)="etiketAramaInputChanged($event)"
-                [(ngModel)]="etiketAramaParam"
-              />
-              <button class="btn" type="submit"><i class="icon-search icon-2x"></i></button>
-            </div>
-            <div class="tag-div">
-              <ng-container *ngFor="let etiket of etiketAramaParamArray; let i = index">
-                <button [ngClass]="{ 'tag-margin': i !== 0 }" class="btn tag-btn">
-                  {{ etiket }} <i class="icon-remove alert-danger" (click)="arrayEtiketSil(etiket)"></i>
-                </button>
-              </ng-container>
-            </div>
+          <form (submit)="etiketAraFormSubmit()" class="dropdown-search-box">
+            <ejs-multiselect
+              id="localData"
+              #local
+              [dataSource]="etiketler"
+              [fields]="etiketAlanlar"
+              [placeholder]="etiketAraText[seciliDil][this.arsivService.seciliArsivTip.value]"
+              style="padding: 10px;"
+            ></ejs-multiselect>
+            <!--            <div class="input-append">-->
+            <!--              <input-->
+            <!--                class="span5 seachPlaceholder"-->
+            <!--                id="appendedInputButton"-->
+            <!--                type="text"-->
+            <!--                placeholder="Enter Keywords "-->
+            <!--                name="searchItems"-->
+            <!--                (keypress)="etiketAramaInputChanged($event)"-->
+            <!--                [(ngModel)]="etiketAramaParam"-->
+            <!--              />-->
+            <!--              <button class="btn" type="submit"><i class="icon-search icon-2x"></i></button>-->
+            <!--            </div>-->
+            <!--            <div class="tag-div">-->
+            <!--              <ng-container *ngFor="let etiket of etiketAramaParamArray; let i = index">-->
+            <!--                <button [ngClass]="{ 'tag-margin': i !== 0 }" class="btn tag-btn">-->
+            <!--                  {{ etiket }} <i class="icon-remove alert-danger" (click)="arrayEtiketSil(etiket)"></i>-->
+            <!--                </button>-->
+            <!--              </ng-container>-->
+            <!--            </div>-->
           </form>
         </div>
       </div>
@@ -66,11 +74,10 @@
                   <figcaption class="img-meta">
                     <div class="row-fluid">
                       <div class="span8">
-                        <a href="#" class="img-id">#154895856</a>
+                        <a href="#" class="img-id">{{ arsivGorsel[seciliDil].OrtakId }}</a>
                         <a href="#" class="img-tags" *ngIf="arsivGorsel[seciliDil]">{{
                           arsivGorsel[seciliDil].GorselAd
                         }}</a>
-                        <a href="#" class="img-tags">/ Textures</a>
                       </div>
                       <div class="span4">
                         <div class="dropdown">
@@ -81,10 +88,27 @@
                             data-toggle="dropdown"
                             ><i class="icon-download"></i
                           ></a>
-                          <ul class="dropdown-menu">
-                            <li><a href="#">1920 x 1080</a></li>
-                            <li><a href="#">2560 x 1440</a></li>
-                            <li><a href="#">3840 x 2160</a></li>
+                          <ul class="dropdown-menu" *ngIf="arsivGorsel.Yatay">
+                            <li>
+                              <a target="_blank" [href]="arsivGorsel.GorselUrlYatay1280X720">1280 x 720</a>
+                            </li>
+                            <li>
+                              <a target="_blank" [href]="arsivGorsel.GorselUrlYatay2560X1440">2560 x 1440</a>
+                            </li>
+                            <li>
+                              <a target="_blank" [href]="arsivGorsel.GorselUrlYatay3840X2160">3840 x 2160</a>
+                            </li>
+                          </ul>
+                          <ul class="dropdown-menu" *ngIf="!arsivGorsel.Yatay">
+                            <li>
+                              <a target="_blank" [href]="arsivGorsel.GorselUrlDikey720X1280">720 x 1280</a>
+                            </li>
+                            <li>
+                              <a target="_blank" [href]="arsivGorsel.GorselUrlDikey1440X2560">1440 x 2560</a>
+                            </li>
+                            <li>
+                              <a target="_blank" [href]="arsivGorsel.GorselUrlDikey2160X3840">2160 x 3840</a>
+                            </li>
                           </ul>
                         </div>
                       </div>
@@ -96,6 +120,49 @@
               </div>
             </div>
             <div *ngIf="!arsivGorsel">
+              Loading ...
+            </div>
+          </li>
+        </cdk-virtual-scroll-viewport>
+      </div>
+      <div class="row" *ngIf="arsivVideoDataSource">
+        <cdk-virtual-scroll-viewport
+          itemSize="100"
+          class="arsiv-scrollbar"
+          (scrolledIndexChange)="sayfaDegistir($event)"
+        >
+          <li *cdkVirtualFor="let arsivVideo of arsivVideoDataSource">
+            <div *ngIf="arsivVideo">
+              <div class="span3">
+                <figure class="top-img" style="margin-top: 10px;">
+                  <video style="width: 100%;" src="{{ arsivVideo.VideoUrl }}"></video>
+
+                  <figcaption class="img-meta">
+                    <div class="row-fluid">
+                      <div class="span8">
+                        <a href="#" class="img-id">{{ arsivVideo[seciliDil].OrtakId }}</a>
+                        <a href="#" class="img-tags" *ngIf="arsivVideo[seciliDil]">{{
+                          arsivVideo[seciliDil].VideoAd
+                        }}</a>
+                      </div>
+                      <div class="span4">
+                        <a
+                          target="_blank"
+                          [href]="arsivVideo.VideoUrl"
+                          class="btn download-btn f-right"
+                          type="button"
+                          download
+                          ><i class="icon-download"></i
+                        ></a>
+                      </div>
+                    </div>
+                  </figcaption>
+
+                  <div class="roll-over" (click)="videoDetayDialogAc(arsivVideo)"></div>
+                </figure>
+              </div>
+            </div>
+            <div *ngIf="!arsivVideo">
               Loading ...
             </div>
           </li>

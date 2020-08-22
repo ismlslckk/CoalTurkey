@@ -2,17 +2,21 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IApiCevap } from '../modeller/iapi-cevap';
-import { IArsivGorsel } from '../modeller/iarsiv';
+import { IArsivGorsel, IArsivVideo } from '../modeller/iarsiv';
 import { ApiURL } from '../utils/constants';
-import { IGorselGetirEtiket } from '../modeller/ietiket';
+import { IEtiketCokDilli, IEtiketList } from '../modeller/ietiket';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArsivService {
   gorseller = new BehaviorSubject<IArsivGorsel[]>([]);
+  videolar = new BehaviorSubject<IArsivVideo[]>([]);
+  etiketler = new BehaviorSubject<IEtiketCokDilli[]>([]);
 
   seciliEtiketId = new BehaviorSubject<number>(null);
+
+  seciliArsivTip = new BehaviorSubject<string>('gorsel');
 
   constructor(private httpClient: HttpClient) {}
 
@@ -36,11 +40,11 @@ export class ArsivService {
     return this.httpClient.get<IApiCevap>(`${ApiURL}Etiket/hepsini-getir`);
   }
 
-  gorselGetirEtiketList(etiketList: IGorselGetirEtiket): Observable<IApiCevap> {
+  gorselGetirEtiketList(etiketList: IEtiketList): Observable<IApiCevap> {
     return this.httpClient.post<IApiCevap>(`${ApiURL}arsivgorselbilgi/hepsini-getir`, etiketList);
   }
 
-  videoGetirEtiketList(etiketList: IGorselGetirEtiket): Observable<IApiCevap> {
+  videoGetirEtiketList(etiketList: IEtiketList): Observable<IApiCevap> {
     return this.httpClient.post<IApiCevap>(`${ApiURL}arsivvideobilgi/hepsini-getir`, etiketList);
   }
 }

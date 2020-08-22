@@ -15,6 +15,7 @@ import { MatDialogModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FooterComponent } from './footer/footer.component';
     ScrollingModule,
     MatDialogModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    MultiSelectAllModule
   ],
   entryComponents: [ArsivDetayComponent],
   providers: [ArsivService],

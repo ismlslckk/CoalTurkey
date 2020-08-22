@@ -1,99 +1,81 @@
 <div class="navbar navbar-inverse-blue navbar-fixed-top">
   <div class="navbar-inner navbar-custom">
-    <div class="container">
-      <div class="navigation">
-        <a class="brand brand-custom" href="index.html"><img src="/assets/arsiv/img/logo2.png" alt="logo"/></a>
-        <div class="input-append navbar-search-input">
-          <input
-            class="span5"
-            id="navbar-search"
-            type="text"
-            placeholder="Enter Keywords "
-            name="searchItems"
-            (keypress)="etiketAramaInputChanged($event)"
-            [(ngModel)]="etiketAramaParam"
-          />
-          <ng-container *ngFor="let etiket of etiketAramaParamArray; let i = index">
-            <button [ngClass]="{ 'tag-margin': i !== 0 }" class="btn tag-btn">
-              {{ etiket }} <i class="icon-remove alert-danger" (click)="arrayEtiketSil(etiket)"></i>
-            </button>
-          </ng-container>
-          <button class="btn" type="submit"><i class="icon-search"></i></button>
-        </div>
-        <div class="btn-group f-right">
-          <button class="btn" #seciliDilButon>Türkçe</button>
-          <button class="btn dropdown-toggle" data-toggle="dropdown">
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" id="filters">
-            <li><a (click)="dilDegistir('Turkce', $event)" class="selected">Türkçe</a></li>
-            <li><a (click)="dilDegistir('Ingilizce', $event)">English</a></li>
-          </ul>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="span1">
-              <h4 class="title">Categories</h4>
-            </div>
-            <div class="span11">
-              <div class="tabbable">
-                <ul class="nav nav-tabs">
-                  <li class="active">
-                    <a href="#tab1" data-toggle="tab"><i class="icon-picture icon-large"></i></a>
-                  </li>
-                  <li>
-                    <a href="#tab2" data-toggle="tab"><i class="icon-facetime-video icon-large"></i></a>
-                  </li>
-                </ul>
-              </div>
+    <div class="btn-group f-right" style="margin-right: 20px;">
+      <button class="btn" #seciliDilButon>Türkçe</button>
+      <button class="btn dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" id="filters">
+        <li><a (click)="dilDegistir('Turkce', $event)" class="selected">Türkçe</a></li>
+        <li><a (click)="dilDegistir('Ingilizce', $event)">English</a></li>
+      </ul>
+    </div>
+    <div class="navigation">
+      <a class="brand brand-custom" href="index.html"><img src="/assets/arsiv/img/logo2.png" alt="logo"/></a>
+      <div class="container">
+        <div class="row">
+          <div class="span11">
+            <div class="tabbable">
+              <ul class="nav nav-tabs" style="margin-top: 40px;">
+                <li class="active">
+                  <a href="#tab1" data-toggle="tab" (click)="seciliArsivTipDegistir('gorsel')"
+                    ><i class="icon-picture icon-large"></i
+                  ></a>
+                </li>
+                <li>
+                  <a href="#tab2" data-toggle="tab" (click)="seciliArsivTipDegistir('video')"
+                    ><i class="icon-facetime-video icon-large"></i
+                  ></a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-        <div class="container navbar-tag-container">
-          <div class="tab-content">
-            <div class="tab-pane active" id="tab1">
-              <div class="row">
-                <ul class="unstyled navbar-tag-list">
-                  <li *ngFor="let gorselEtiket of gorselEtiketler">
-                    <a (click)="etiketSecildi(gorselEtiket[seciliDil].OrtakId)">{{ gorselEtiket[seciliDil].Ad }}</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="tab-pane" id="tab2">
-              <div class="row">
-                <ul class="unstyled navbar-tag-list">
-                  <li *ngFor="let videoEtiket of videoEtiketler">
-                    <a href="#">{{ videoEtiket[seciliDil].Ad }}</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--        <ul class="unstyled navbar-tag-list">-->
-        <!--          <li><a href="#">Abstract</a></li>-->
-        <!--          <li><a href="#">Editorial</a></li>-->
-        <!--          <li><a href="#">Miscellaneous</a></li>-->
-        <!--          <li><a href="#">Signs/Symbols</a></li>-->
-        <!--          <li><a href="#">Abstract</a></li>-->
-        <!--          <li><a href="#">Editorial</a></li>-->
-        <!--          <li><a href="#">Miscellaneous</a></li>-->
-        <!--          <li><a href="#">Signs/Symbols</a></li>-->
-        <!--          <li><a href="#">Abstract</a></li>-->
-        <!--          <li><a href="#">Editorial</a></li>-->
-        <!--          <li><a href="#">Miscellaneous</a></li>-->
-        <!--          <li><a href="#">Signs/Symbols</a></li>-->
-        <!--          <li><a href="#">Abstract</a></li>-->
-        <!--          <li><a href="#">Editorial</a></li>-->
-        <!--          <li><a href="#">Miscellaneous</a></li>-->
-        <!--          <li><a href="#">Signs/Symbols</a></li>-->
-        <!--          <li><a href="#">Abstract</a></li>-->
-        <!--          <li><a href="#">Editorial</a></li>-->
-        <!--          <li><a href="#">Miscellaneous</a></li>-->
-        <!--          <li><a href="#">Signs/Symbols</a></li>-->
-        <!--        </ul>-->
       </div>
+      <div class="container navbar-tag-container" style="float: left;">
+        <div class="tab-content">
+          <div class="tab-pane active" id="tab1">
+            <div class="row">
+              <ul class="unstyled navbar-tag-list">
+                <li *ngFor="let gorselEtiket of gorselEtiketler">
+                  <a (click)="etiketSecildi(gorselEtiket[seciliDil].OrtakId)">{{ gorselEtiket[seciliDil].Ad }}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="tab-pane" id="tab2">
+            <div class="row">
+              <ul class="unstyled navbar-tag-list">
+                <li *ngFor="let videoEtiket of videoEtiketler">
+                  <a (click)="etiketSecildi(videoEtiket[seciliDil].OrtakId)">{{ videoEtiket[seciliDil].Ad }}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--        <ul class="unstyled navbar-tag-list">-->
+      <!--          <li><a href="#">Abstract</a></li>-->
+      <!--          <li><a href="#">Editorial</a></li>-->
+      <!--          <li><a href="#">Miscellaneous</a></li>-->
+      <!--          <li><a href="#">Signs/Symbols</a></li>-->
+      <!--          <li><a href="#">Abstract</a></li>-->
+      <!--          <li><a href="#">Editorial</a></li>-->
+      <!--          <li><a href="#">Miscellaneous</a></li>-->
+      <!--          <li><a href="#">Signs/Symbols</a></li>-->
+      <!--          <li><a href="#">Abstract</a></li>-->
+      <!--          <li><a href="#">Editorial</a></li>-->
+      <!--          <li><a href="#">Miscellaneous</a></li>-->
+      <!--          <li><a href="#">Signs/Symbols</a></li>-->
+      <!--          <li><a href="#">Abstract</a></li>-->
+      <!--          <li><a href="#">Editorial</a></li>-->
+      <!--          <li><a href="#">Miscellaneous</a></li>-->
+      <!--          <li><a href="#">Signs/Symbols</a></li>-->
+      <!--          <li><a href="#">Abstract</a></li>-->
+      <!--          <li><a href="#">Editorial</a></li>-->
+      <!--          <li><a href="#">Miscellaneous</a></li>-->
+      <!--          <li><a href="#">Signs/Symbols</a></li>-->
+      <!--        </ul>-->
     </div>
   </div>
 </div>
