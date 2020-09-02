@@ -25,18 +25,23 @@ export class HeaderComponent implements OnInit {
     this.dilService.seciliDil.subscribe(seciliDil => {
       this.seciliDil = seciliDil;
     });
-    this.arsivService.gorselEtiketleriGetir().subscribe(cevap => {
-      if (cevap.Basarili) {
-        this.gorselEtiketler = cevap.Veri;
-        this.etiketler = cevap.Veri.map(x => x[this.seciliDil]);
-        this.arsivService.etiketler.next(cevap.Veri);
-      }
-    });
-    this.arsivService.videoEtiketleriGetir().subscribe(cevap => {
-      if (cevap.Basarili) {
-        this.videoEtiketler = cevap.Veri;
-        this.etiketler = cevap.Veri.map(x => x[this.seciliDil]);
-        this.arsivService.etiketler.next(cevap.Veri);
+    this.arsivService.seciliArsivTip.subscribe(seciliArsivTip => {
+      if (seciliArsivTip === 'gorsel') {
+        this.arsivService.gorselEtiketleriGetir().subscribe(cevap => {
+          if (cevap.Basarili) {
+            this.gorselEtiketler = cevap.Veri;
+            this.etiketler = cevap.Veri.map(x => x[this.seciliDil]);
+            this.arsivService.etiketler.next(cevap.Veri);
+          }
+        });
+      } else if (seciliArsivTip === 'video') {
+        this.arsivService.videoEtiketleriGetir().subscribe(cevap => {
+          if (cevap.Basarili) {
+            this.videoEtiketler = cevap.Veri;
+            this.etiketler = cevap.Veri.map(x => x[this.seciliDil]);
+            this.arsivService.etiketler.next(cevap.Veri);
+          }
+        });
       }
     });
   }

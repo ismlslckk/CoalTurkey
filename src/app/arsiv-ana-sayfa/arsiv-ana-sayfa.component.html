@@ -1,27 +1,15 @@
 <section class="main-pictures-cotainer">
   <div class="container">
-    <div class="row">
-      <div class="span12">
-        <div class="content-text">
-          <h1 class="title">Download Thousands of pictures for Free</h1>
-          <h4 class="subtitle">
-            Stock p<span class="style-border"
-              >hotos, illustrations, video and music -handpicked by creatives all over th</span
-            >e world.
-          </h4>
-        </div>
-      </div>
-    </div>
-    <div class="row">
+    <div class="row" style="margin-top: 200px;">
       <div class="span6 offset3">
         <div class="search-form">
           <form (submit)="etiketAraFormSubmit()" class="dropdown-search-box">
             <ejs-multiselect
-              id="localData"
-              #local
+              id="seciliEtiketler"
               [dataSource]="etiketler"
               [fields]="etiketAlanlar"
-              [placeholder]="etiketAraText[seciliDil][this.arsivService.seciliArsivTip.value]"
+              [placeholder]="etiketAraText[seciliDil][this.seciliArsivTip]"
+              [(value)]="seciliEtiketler"
               style="padding: 10px;"
             ></ejs-multiselect>
             <!--            <div class="input-append">-->
@@ -44,13 +32,6 @@
             <!--              </ng-container>-->
             <!--            </div>-->
           </form>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="span12">
-        <div class="content-text v2">
-          <h4 class="subtitle"><strong>750,789,586</strong> free files &amp; counting.</h4>
         </div>
       </div>
     </div>

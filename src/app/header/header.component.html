@@ -11,7 +11,20 @@
       </ul>
     </div>
     <div class="navigation">
-      <a class="brand brand-custom" href="index.html"><img src="/assets/arsiv/img/logo2.png" alt="logo"/></a>
+      <a class="brand brand-custom" [routerLink]="'/'">
+        <img
+          *ngIf="seciliDil === 'Turkce'"
+          src="/assets/arsiv/img/coalinturkey-logo-tr.png"
+          width="240"
+          alt="coal in turkey"
+        />
+        <img
+          *ngIf="seciliDil === 'Ingilizce'"
+          src="/assets/arsiv/img/coalinturkey-logo-en.png"
+          width="240"
+          alt="coal in turkey"
+        />
+      </a>
       <div class="container">
         <div class="row">
           <div class="span11">
@@ -54,28 +67,6 @@
           </div>
         </div>
       </div>
-      <!--        <ul class="unstyled navbar-tag-list">-->
-      <!--          <li><a href="#">Abstract</a></li>-->
-      <!--          <li><a href="#">Editorial</a></li>-->
-      <!--          <li><a href="#">Miscellaneous</a></li>-->
-      <!--          <li><a href="#">Signs/Symbols</a></li>-->
-      <!--          <li><a href="#">Abstract</a></li>-->
-      <!--          <li><a href="#">Editorial</a></li>-->
-      <!--          <li><a href="#">Miscellaneous</a></li>-->
-      <!--          <li><a href="#">Signs/Symbols</a></li>-->
-      <!--          <li><a href="#">Abstract</a></li>-->
-      <!--          <li><a href="#">Editorial</a></li>-->
-      <!--          <li><a href="#">Miscellaneous</a></li>-->
-      <!--          <li><a href="#">Signs/Symbols</a></li>-->
-      <!--          <li><a href="#">Abstract</a></li>-->
-      <!--          <li><a href="#">Editorial</a></li>-->
-      <!--          <li><a href="#">Miscellaneous</a></li>-->
-      <!--          <li><a href="#">Signs/Symbols</a></li>-->
-      <!--          <li><a href="#">Abstract</a></li>-->
-      <!--          <li><a href="#">Editorial</a></li>-->
-      <!--          <li><a href="#">Miscellaneous</a></li>-->
-      <!--          <li><a href="#">Signs/Symbols</a></li>-->
-      <!--        </ul>-->
     </div>
   </div>
 </div>

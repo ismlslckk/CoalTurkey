@@ -1,153 +1,155 @@
-<!--<section class="picture-categories">-->
-<!--  <div class="container">-->
-<!--    <div class="row">-->
-<!--      <div class="span1">-->
-<!--        <h4 class="title">Categories</h4>-->
-<!--      </div>-->
-<!--      <div class="span11">-->
-<!--        <div class="tabbable">-->
-<!--          <ul class="nav nav-tabs">-->
-<!--            <li class="active">-->
-<!--              <a href="#tab1" data-toggle="tab"><i class="icon-picture icon-large"></i></a>-->
-<!--            </li>-->
-<!--            <li>-->
-<!--              <a href="#tab2" data-toggle="tab"><i class="icon-facetime-video icon-large"></i></a>-->
-<!--            </li>-->
-<!--          </ul>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-
-<!--  <section class="categories-back">-->
-<!--    <div class="container">-->
-<!--      <div class="tab-content">-->
-<!--        <div class="tab-pane active" id="tab1">-->
-<!--          <div class="row">-->
-<!--            <ul class="unstyled cat-list tag-list">-->
-<!--              <li><a href="#">Abstract</a></li>-->
-<!--              <li><a href="#">Editorial</a></li>-->
-<!--              <li><a href="#">Miscellaneous</a></li>-->
-<!--              <li><a href="#">Signs/Symbols</a></li>-->
-<!--              <li><a href="#">Abstract</a></li>-->
-<!--              <li><a href="#">Editorial</a></li>-->
-<!--              <li><a href="#">Miscellaneous</a></li>-->
-<!--              <li><a href="#">Signs/Symbols</a></li>-->
-<!--              <li><a href="#">Abstract</a></li>-->
-<!--              <li><a href="#">Editorial</a></li>-->
-<!--              <li><a href="#">Miscellaneous</a></li>-->
-<!--              <li><a href="#">Signs/Symbols</a></li>-->
-<!--              <li><a href="#">Abstract</a></li>-->
-<!--              <li><a href="#">Editorial</a></li>-->
-<!--              <li><a href="#">Miscellaneous</a></li>-->
-<!--              <li><a href="#">Signs/Symbols</a></li>-->
-<!--              <li><a href="#">Abstract</a></li>-->
-<!--              <li><a href="#">Editorial</a></li>-->
-<!--              <li><a href="#">Miscellaneous</a></li>-->
-<!--              <li><a href="#">Signs/Symbols</a></li>-->
-<!--            </ul>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="tab-pane" id="tab2">-->
-<!--          <div class="row">-->
-<!--            <ul class="unstyled cat-list tag-list">-->
-<!--              <li><a href="#">Video 1</a></li>-->
-<!--              <li><a href="#">Video 2</a></li>-->
-<!--              <li><a href="#">Video 3</a></li>-->
-<!--              <li><a href="#">Video 4</a></li>-->
-<!--            </ul>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </section>-->
-<!--</section>-->
 <section class="search-results">
   <div class="container custom-container">
     <div class="row">
       <div class="search-result-title">
         <div class="row-fluid">
           <div class="span8">
-            <h4 class="title">Search Results (35) - <span>Abstract Backgrounds</span></h4>
+            <h4 class="title">{{ arsivAraText[seciliDil].ara }}</h4>
           </div>
           <div class="span4">
             <div class="portfolio-controllers-container">
-              <p class="pull-left sort-title">Sort by -</p>
-              <div class="btn-group">
-                <button class="btn btn-large">Tümü</button>
+              <p class="pull-left sort-title">{{ arsivAraText[seciliDil].sira }}</p>
+              <div class="btn-group" style="width: 300px;">
+                <button class="btn btn-large" id="sortTextBtn">{{ arsivAraText[seciliDil].varsayilan }}</button>
                 <button class="btn btn-large dropdown-toggle" data-toggle="dropdown">
                   <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" id="filters">
-                  <li><a href="#" data-filter="*" class="selected">Tümü</a></li>
-                  <li><a href="#" data-filter=".transition">Yatay</a></li>
-                  <li><a href="#" data-filter=".metal">Dikey</a></li>
-                  <li><a href="#" data-filter=".alkali">Tarihe Göre (Eski)</a></li>
-                  <li><a href="#" data-filter=".alkali">Tarihe Göre (Yeni)</a></li>
+                  <li>
+                    <a (click)="icerikSirala('varsayilan')" data-filter="*" class="selected">{{
+                      arsivAraText[seciliDil].varsayilan
+                    }}</a>
+                  </li>
+                  <li *ngIf="seciliArsivTip === 'gorsel'">
+                    <a (click)="icerikSirala('yatay')" data-filter=".transition">{{ arsivAraText[seciliDil].yatay }}</a>
+                  </li>
+                  <li *ngIf="seciliArsivTip === 'gorsel'">
+                    <a (click)="icerikSirala('dikey')" data-filter=".metal">{{ arsivAraText[seciliDil].dikey }}</a>
+                  </li>
+                  <li>
+                    <a (click)="icerikSirala('eski')" data-filter=".alkali">{{ arsivAraText[seciliDil].eski }}</a>
+                  </li>
+                  <li>
+                    <a (click)="icerikSirala('yeni')" data-filter=".alkali"> {{ arsivAraText[seciliDil].yeni }} </a>
+                  </li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
         <section class="top-images v2">
-          <div class="images-container v3">
-            <div class="row">
-              <div id="portfolio-container">
-                <cdk-virtual-scroll-viewport itemSize="100" class="arsiv-scrollbar">
-                  <li *cdkVirtualFor="let arsivGorsel of arsivGorselDataSource">
-                    <div *ngIf="arsivGorsel">
-                      <div class="span6">
-                        <figure class="top-img">
-                          <img class="arsiv-gorsel" src="../../assets/img/work/1.jpg" alt="img" />
+          <div class="images-container">
+            <div class="row" *ngIf="arsivGorselDataSource">
+              <cdk-virtual-scroll-viewport
+                itemSize="100"
+                class="arsiv-scrollbar"
+                (scrolledIndexChange)="sayfaDegistir($event)"
+              >
+                <li *cdkVirtualFor="let arsivGorsel of arsivGorselDataSource">
+                  <div *ngIf="arsivGorsel">
+                    <div class="span3">
+                      <figure class="top-img" style="margin-top: 10px;">
+                        <img class="arsiv-gorsel" [src]="arsivGorsel.GorselUrl" alt="img" />
 
-                          <figcaption class="img-meta">
-                            <div class="row-fluid">
-                              <div class="span8">
-                                <a href="#" class="img-id">#154895856</a>
-                                <a href="#" class="img-tags">{{ arsivGorsel.DosyaAd }}</a>
-                                <a href="#" class="img-tags">/ Textures</a>
-                              </div>
-                              <div class="span4">
-                                <div class="dropdown">
-                                  <a
-                                    href="#"
-                                    class="btn download-btn dropdown-toggle"
-                                    type="button"
-                                    data-toggle="dropdown"
-                                    ><i class="icon-download"></i
-                                  ></a>
-                                  <ul class="dropdown-menu">
-                                    <li><a href="#">1920 x 1080</a></li>
-                                    <li><a href="#">2560 x 1440</a></li>
-                                    <li><a href="#">3840 x 2160</a></li>
-                                  </ul>
-                                </div>
+                        <figcaption class="img-meta">
+                          <div class="row-fluid">
+                            <div class="span8">
+                              <a href="#" class="img-id">{{ arsivGorsel[seciliDil].OrtakId }}</a>
+                              <a href="#" class="img-tags" *ngIf="arsivGorsel[seciliDil]">{{
+                                arsivGorsel[seciliDil].GorselAd
+                              }}</a>
+                            </div>
+                            <div class="span4">
+                              <div class="dropdown">
+                                <a
+                                  href="#"
+                                  class="btn download-btn dropdown-toggle f-right"
+                                  type="button"
+                                  data-toggle="dropdown"
+                                  ><i class="icon-download"></i
+                                ></a>
+                                <ul class="dropdown-menu" *ngIf="arsivGorsel.Yatay">
+                                  <li>
+                                    <a target="_blank" [href]="arsivGorsel.GorselUrlYatay1280X720">1280 x 720</a>
+                                  </li>
+                                  <li>
+                                    <a target="_blank" [href]="arsivGorsel.GorselUrlYatay2560X1440">2560 x 1440</a>
+                                  </li>
+                                  <li>
+                                    <a target="_blank" [href]="arsivGorsel.GorselUrlYatay3840X2160">3840 x 2160</a>
+                                  </li>
+                                </ul>
+                                <ul class="dropdown-menu" *ngIf="!arsivGorsel.Yatay">
+                                  <li>
+                                    <a target="_blank" [href]="arsivGorsel.GorselUrlDikey720X1280">720 x 1280</a>
+                                  </li>
+                                  <li>
+                                    <a target="_blank" [href]="arsivGorsel.GorselUrlDikey1440X2560">1440 x 2560</a>
+                                  </li>
+                                  <li>
+                                    <a target="_blank" [href]="arsivGorsel.GorselUrlDikey2160X3840">2160 x 3840</a>
+                                  </li>
+                                </ul>
                               </div>
                             </div>
-                          </figcaption>
+                          </div>
+                        </figcaption>
 
-                          <div class="roll-over" (click)="gorselDetayDialogAc()"></div>
-                        </figure>
-                      </div>
+                        <div class="roll-over" (click)="gorselDetayDialogAc(arsivGorsel)"></div>
+                      </figure>
                     </div>
-                    <div *ngIf="!arsivGorsel">
-                      Loading ...
+                  </div>
+                  <div *ngIf="!arsivGorsel">
+                    Loading ...
+                  </div>
+                </li>
+              </cdk-virtual-scroll-viewport>
+            </div>
+            <div class="row" *ngIf="arsivVideoDataSource">
+              <cdk-virtual-scroll-viewport
+                itemSize="100"
+                class="arsiv-scrollbar"
+                (scrolledIndexChange)="sayfaDegistir($event)"
+              >
+                <li *cdkVirtualFor="let arsivVideo of arsivVideoDataSource">
+                  <div *ngIf="arsivVideo">
+                    <div class="span3">
+                      <figure class="top-img" style="margin-top: 10px;">
+                        <video style="width: 100%;" src="{{ arsivVideo.VideoUrl }}"></video>
+
+                        <figcaption class="img-meta">
+                          <div class="row-fluid">
+                            <div class="span8">
+                              <a href="#" class="img-id">{{ arsivVideo[seciliDil].OrtakId }}</a>
+                              <a href="#" class="img-tags" *ngIf="arsivVideo[seciliDil]">{{
+                                arsivVideo[seciliDil].VideoAd
+                              }}</a>
+                            </div>
+                            <div class="span4">
+                              <a
+                                target="_blank"
+                                [href]="arsivVideo.VideoUrl"
+                                class="btn download-btn f-right"
+                                type="button"
+                                download
+                                ><i class="icon-download"></i
+                              ></a>
+                            </div>
+                          </div>
+                        </figcaption>
+
+                        <div class="roll-over" (click)="videoDetayDialogAc(arsivVideo)"></div>
+                      </figure>
                     </div>
-                  </li>
-                </cdk-virtual-scroll-viewport>
-              </div>
+                  </div>
+                  <div *ngIf="!arsivVideo">
+                    Loading ...
+                  </div>
+                </li>
+              </cdk-virtual-scroll-viewport>
             </div>
           </div>
         </section>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="call-to-action-txt">
-  <div class="container">
-    <div class="row">
-      <div class="span12">
-        <h5 class="center title">Can’t find what you are looking for? Why don’t you <a href="#">let us know.</a></h5>
       </div>
     </div>
   </div>

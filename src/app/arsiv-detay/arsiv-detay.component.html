@@ -158,12 +158,12 @@
     </div>
     <div class="images-container v3">
       <div class="row" *ngIf="arsivGorselDataSource">
-        <cdk-virtual-scroll-viewport itemSize="100" class="arsiv-scrollbar">
+        <cdk-virtual-scroll-viewport itemSize="100" class="arsiv-scrollbar" style="height: 220px;">
           <li *cdkVirtualFor="let arsivGorsel of arsivGorselDataSource">
             <div *ngIf="arsivGorsel">
               <div class="span3">
                 <figure class="top-img" style="margin-top: 10px;">
-                  <img class="arsiv-gorsel" [src]="arsivGorsel.GorselUrl" alt="img" />
+                  <img class="arsiv-gorsel" [src]="arsivGorsel.GorselUrl" alt="{{ arsivGorsel[seciliDil].GorselAd }}" />
 
                   <figcaption class="img-meta">
                     <div class="row-fluid">
@@ -177,7 +177,7 @@
                             href="#"
                             class="btn download-btn dropdown-toggle f-right"
                             type="button"
-                            gorsel-toggle="dropdown"
+                            data-toggle="dropdown"
                             ><i class="icon-download"></i
                           ></a>
                           <ul class="dropdown-menu" *ngIf="arsivGorsel.Yatay">
@@ -218,7 +218,7 @@
         </cdk-virtual-scroll-viewport>
       </div>
       <div class="row" *ngIf="arsivVideoDataSource">
-        <cdk-virtual-scroll-viewport itemSize="100" class="arsiv-scrollbar">
+        <cdk-virtual-scroll-viewport itemSize="100" class="arsiv-scrollbar" style="height: 220px;">
           <li *cdkVirtualFor="let arsivVideo of arsivVideoDataSource">
             <div *ngIf="arsivVideo">
               <div class="span3">

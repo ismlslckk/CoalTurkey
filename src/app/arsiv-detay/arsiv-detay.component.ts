@@ -42,12 +42,12 @@ export class ArsivDetayComponent implements OnInit {
     }
   }
 
-  private gorselDetayGetir(arsivGorsel: IArsivGorsel) {
-    this.data.gorsel = arsivGorsel;
+  gorselDetayGetir(arsivGorsel: IArsivGorsel) {
+    this.gorsel = arsivGorsel;
   }
 
-  private videoDetayGetir(arsivVideo: IArsivVideo) {
-    this.data.video = arsivVideo;
+  videoDetayGetir(arsivVideo: IArsivVideo) {
+    this.video = arsivVideo;
   }
 
   private gorselGetirEtiket(): void {

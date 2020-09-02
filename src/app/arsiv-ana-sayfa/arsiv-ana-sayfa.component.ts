@@ -18,16 +18,13 @@ export class ArsivAnaSayfaComponent implements OnInit {
   arsivGorselDataSource: ArsivGorselDataSource;
   arsivVideoDataSource: ArsivVideoDataSource;
 
-  etiketAramaParam: string;
-  etiketAramaParamArray: string[] = [];
-
   etiketList: IEtiketList = { EtiketOrtakIdList: null, Sayfa: 0, PasiflerideGetir: false };
   seciliDil: string;
   toplamVeriSayisi = 0;
 
   etiketler: IEtiket[];
   etiketAlanlar = { text: 'Ad', value: 'OrtakId' };
-  seciliEtiketler: IEtiket[] = [];
+  seciliEtiketler: number[] = [];
   etiketAraText = {
     Turkce: {
       gorsel: 'Görsellerde Arayınız',
@@ -38,6 +35,8 @@ export class ArsivAnaSayfaComponent implements OnInit {
       video: 'Search in Videos'
     }
   };
+
+  seciliArsivTip = 'gorsel';
 
   constructor(
     private arsivService: ArsivService,
@@ -59,12 +58,13 @@ export class ArsivAnaSayfaComponent implements OnInit {
         this.videoVeyaGorselTrigger();
       }
     });
-    this.arsivService.seciliArsivTip.subscribe(_ => {
+    this.arsivService.seciliArsivTip.subscribe(seciliArsivTip => {
+      this.seciliArsivTip = seciliArsivTip;
       this.videoVeyaGorselTrigger();
     });
   }
 
-  private videoVeyaGorselTrigger(): void {
+  videoVeyaGorselTrigger(): void {
     this.arsivGorselDataSource = null;
     this.arsivVideoDataSource = null;
     if (this.arsivService.seciliArsivTip.value === 'gorsel') {
@@ -74,7 +74,7 @@ export class ArsivAnaSayfaComponent implements OnInit {
     }
   }
 
-  private gorselGetirEtiket(): void {
+  gorselGetirEtiket(): void {
     this.arsivService.gorselGetirEtiketList(this.etiketList).subscribe(cevap => {
       if (cevap.Basarili) {
         this.toplamVeriSayisi = cevap.Veri.length;
@@ -84,7 +84,7 @@ export class ArsivAnaSayfaComponent implements OnInit {
     });
   }
 
-  private videoGetirEtiket(): void {
+  videoGetirEtiket(): void {
     this.arsivService.videoGetirEtiketList(this.etiketList).subscribe(cevap => {
       if (cevap.Basarili) {
         this.toplamVeriSayisi = cevap.Veri.length;
@@ -94,45 +94,30 @@ export class ArsivAnaSayfaComponent implements OnInit {
     });
   }
 
-  private gorselDetayDialogAc(arsivGorsel: IArsivGorsel) {
+  gorselDetayDialogAc(arsivGorsel: IArsivGorsel) {
     const arsivDetay = this.matDialog.open(ArsivDetayComponent, {
-      height: '75%',
+      height: '90%',
       width: '85%',
       maxWidth: '85%',
       data: { gorsel: arsivGorsel }
     });
   }
 
-  private videoDetayDialogAc(arsivVideo: IArsivVideo) {
+  videoDetayDialogAc(arsivVideo: IArsivVideo) {
     const arsivDetay = this.matDialog.open(ArsivDetayComponent, {
-      height: '75%',
+      height: '90%',
       width: '85%',
       maxWidth: '85%',
       data: { video: arsivVideo }
     });
   }
 
-  private etiketAraFormSubmit() {
+  etiketAraFormSubmit() {
+    this.arsivService.seciliEtiketlerId.next(this.seciliEtiketler);
     this.router.navigate(['/ara']);
   }
 
-  private etiketAramaInputChanged(event) {
-    if (event.key === ',' && this.etiketAramaParam.split(',')[0].length > 1) {
-      this.etiketAramaParamArray.push(this.etiketAramaParam.split(',')[0]);
-      setTimeout(() => {
-        this.etiketAramaParam = '';
-      }, 100);
-    }
-  }
-
-  private arrayEtiketSil(etiket) {
-    const index = this.etiketAramaParamArray.indexOf(etiket, 0);
-    if (index > -1) {
-      this.etiketAramaParamArray.splice(index, 1);
-    }
-  }
-
-  private sayfaDegistir(sayfa: number) {
+  sayfaDegistir(sayfa: number) {
     if (this.toplamVeriSayisi > 100 && Number.isInteger(sayfa / 100)) {
       this.etiketList.Sayfa = sayfa / 100;
       this.arsivService.gorselGetirEtiketList(this.etiketList).subscribe(cevap => {

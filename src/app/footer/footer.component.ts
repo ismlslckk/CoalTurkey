@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DilService } from '../servisler/dil.service';
 
 @Component({
   selector: 'app-footer',
@@ -6,10 +7,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
+  footerText = {
+    Turkce: {
+      komurBaslik: "Türkiye'de Kömür",
+      komurIcerik:
+        'Kömürün elektrik üretimindeki yeri,geleceği ve üretimi gibi konularda güncel veriler sunan bu proje kömürlü termik santraller haritası,görsel arşiv ve raporlar ile yerel hareketlerin veri ihtiyacını karşılamak ve bu konuda bilgi açığını kapatmak amacıyla Ekosfer tarafından oluşturulmuştur.',
+      iletisimBaslik: 'İletişim',
+      takipBaslik: 'Takip Et',
+      copyright: 'Türkiye’de Kömür bir Ekosfer projesidir. © 2020'
+    },
+    Ingilizce: {
+      komurBaslik: 'Coal In Turkey',
+      komurIcerik:
+        'This project, which offers up-to-date data on the place, future and production of coal in electricity generation, was created by Ekosphere in order to meet the data needs of local movements and to close the information gap on this subject with coal-fired thermal power plants map, visual archive and reports.',
+      iletisimBaslik: 'Contact Us',
+      takipBaslik: 'Follow Us',
+      copyright: 'Coal In Turkey is a Ekosfer project. © 2020'
+    }
+  };
 
-  constructor() { }
+  seciliDil: string;
+
+  constructor(private dilService: DilService) {}
 
   ngOnInit() {
+    this.dilService.seciliDil.subscribe(seciliDil => {
+      this.seciliDil = seciliDil;
+    });
   }
-
 }

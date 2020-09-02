@@ -15,6 +15,7 @@ export class ArsivService {
   etiketler = new BehaviorSubject<IEtiketCokDilli[]>([]);
 
   seciliEtiketId = new BehaviorSubject<number>(null);
+  seciliEtiketlerId = new BehaviorSubject<number[]>(null);
 
   seciliArsivTip = new BehaviorSubject<string>('gorsel');
 

@@ -11,6 +11,7 @@ export interface IArsivGorsel {
   GorselUrlDikey2160X3840?: string;
   GorselUrlDikey1440X2560?: string;
   GorselUrlDikey720X1280?: string;
+  Turkce?: IArsivGorselBilgi;
   Ingilizce?: IArsivGorselBilgi;
   TelifSahip?: ITelifSahip;
   Yatay?: boolean;
@@ -31,6 +32,7 @@ export interface IArsivVideo {
   Etiketler?: IEtiket[];
   VideoUrl?: string;
   Ingilizce?: IArsivGorselBilgi;
+  Turkce?: IArsivGorselBilgi;
   TelifSahip?: ITelifSahip;
   Yatay?: boolean;
 }

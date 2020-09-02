@@ -147,3 +147,21 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .e-multi-select-wrapper .e-chips-close.e-close-hooker {
   font-size: 14px;
 }
+
+::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+  width: 6px;
+  height: 6px;
+  background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+  background-color: #585858;
+}
