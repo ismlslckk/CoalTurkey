@@ -165,3 +165,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 {
   background-color: #585858;
 }
+@media (max-width: 979px) {
+  .brand-custom {
+    left: 10px;
+    top: -12px;
+  }
+}

@@ -1,1 +1,1 @@
-export const ApiURL = 'http://api.coalinturkey.org/api/';
+export const ApiURL = 'https://api.coalinturkey.org/api/';
