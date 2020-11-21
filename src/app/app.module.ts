@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
+import { SozlesmeDetayComponent } from './sozlesme-detay/sozlesme-detay.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
     ArsivDetayComponent,
     ArsivAraComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SozlesmeDetayComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,7 @@ import { MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
     FormsModule,
     MultiSelectAllModule
   ],
-  entryComponents: [ArsivDetayComponent],
+  entryComponents: [ArsivDetayComponent, SozlesmeDetayComponent],
   providers: [ArsivService],
   bootstrap: [AppComponent]
 })

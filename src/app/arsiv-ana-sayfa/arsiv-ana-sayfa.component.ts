@@ -27,10 +27,15 @@ export class ArsivAnaSayfaComponent implements OnInit {
   seciliEtiketler: number[] = [];
   etiketAraText = {
     Turkce: {
-      gorsel: 'Görsellerde Arayınız',
-      video: 'Videolarda Arayınız'
+      gorselArsivBaslik: 'Görsel Arşiv',
+      gorselArsivAciklama:
+        'Basın, sivil toplum kuruluşları ve yerel hareketler için yüksek çözünürlüklü kömürlü termik santral fotoğraf ve videolar',
+      gorsel: 'Görsellerde ara',
+      video: 'Videolarda ara'
     },
     Ingilizce: {
+      gorselArsivBaslik: 'Visual Archive',
+      gorselArsivAciklama: 'High resolution coal power plant photos and videos for the press, NGOs and local movements',
       gorsel: 'Search in Images',
       video: 'Search in Videos'
     }
@@ -46,6 +51,7 @@ export class ArsivAnaSayfaComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.arsivService.aramaAktif.next(false);
     this.dilService.seciliDil.subscribe(seciliDil => {
       this.seciliDil = seciliDil;
       this.arsivService.etiketler.subscribe(etiketler => {
@@ -97,8 +103,8 @@ export class ArsivAnaSayfaComponent implements OnInit {
   gorselDetayDialogAc(arsivGorsel: IArsivGorsel) {
     const arsivDetay = this.matDialog.open(ArsivDetayComponent, {
       height: '90%',
-      width: '85%',
-      maxWidth: '85%',
+      width: '80%',
+      maxWidth: '80%',
       data: { gorsel: arsivGorsel }
     });
   }
@@ -106,8 +112,8 @@ export class ArsivAnaSayfaComponent implements OnInit {
   videoDetayDialogAc(arsivVideo: IArsivVideo) {
     const arsivDetay = this.matDialog.open(ArsivDetayComponent, {
       height: '90%',
-      width: '85%',
-      maxWidth: '85%',
+      width: '80%',
+      maxWidth: '80%',
       data: { video: arsivVideo }
     });
   }
@@ -120,9 +126,7 @@ export class ArsivAnaSayfaComponent implements OnInit {
   sayfaDegistir(sayfa: number) {
     if (this.toplamVeriSayisi > 100 && Number.isInteger(sayfa / 100)) {
       this.etiketList.Sayfa = sayfa / 100;
-      this.arsivService.gorselGetirEtiketList(this.etiketList).subscribe(cevap => {
-        console.log(cevap);
-      });
+      this.arsivService.gorselGetirEtiketList(this.etiketList);
     }
   }
 }

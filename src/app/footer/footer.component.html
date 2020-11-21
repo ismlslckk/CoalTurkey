@@ -1,7 +1,7 @@
 <footer>
   <div class="container">
     <div class="row">
-      <div class="span6">
+      <div class="span4">
         <div class="footer-widgets">
           <h4 class="title">{{ footerText[seciliDil].komurBaslik }}</h4>
           <p class="description">
@@ -9,7 +9,7 @@
           </p>
         </div>
       </div>
-      <div class="span4">
+      <div class="span3">
         <div class="footer-widgets">
           <h4 class="title">{{ footerText[seciliDil].iletisimBaslik }}</h4>
           <p class="description">
@@ -17,9 +17,20 @@
           </p>
           <div class="row-fluid">
             <div class="span10">
-              <p>Mimar Sinan Mh. Selamiali Efendi Cd. Eser Çarşısı N:20/1/69 Üsküdar</p>
+              <p>Söğütlüçeşme Cad. Aliye Kadın İş Merkezi No:189/12 Kadıköy, İstanbul</p>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="span3">
+        <div class="footer-widgets">
+          <h4 class="title">{{ footerText[seciliDil].gizlilikBaslik }}</h4>
+          <p>
+            <a href="javascript: 0" (click)="sozlesmeAc(true)">{{ footerText[seciliDil].gizlilikSozlesme }}</a>
+          </p>
+          <p>
+            <a href="javascript:0" (click)="sozlesmeAc(false)">{{ footerText[seciliDil].kullaniciSozlesme }}</a>
+          </p>
         </div>
       </div>
       <div class="span2">

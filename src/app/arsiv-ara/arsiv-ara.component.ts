@@ -47,6 +47,7 @@ export class ArsivAraComponent implements OnInit {
   constructor(private arsivService: ArsivService, private dilService: DilService, private matDialog: MatDialog) {}
 
   ngOnInit() {
+    this.arsivService.aramaAktif.next(true);
     this.dilService.seciliDil.subscribe(seciliDil => {
       this.seciliDil = seciliDil;
     });
@@ -78,6 +79,7 @@ export class ArsivAraComponent implements OnInit {
 
   gorselGetirEtiket(): void {
     this.arsivService.gorselGetirEtiketList(this.etiketList).subscribe(cevap => {
+      console.log(cevap);
       if (cevap.Basarili) {
         this.toplamVeriSayisi = cevap.Veri.length;
         this.arsivService.gorseller.next(cevap.Veri);
@@ -99,8 +101,8 @@ export class ArsivAraComponent implements OnInit {
   gorselDetayDialogAc(arsivGorsel: IArsivGorsel) {
     const arsivDetay = this.matDialog.open(ArsivDetayComponent, {
       height: '90%',
-      width: '85%',
-      maxWidth: '85%',
+      width: '80%',
+      maxWidth: '80%',
       data: { gorsel: arsivGorsel }
     });
   }
@@ -108,8 +110,8 @@ export class ArsivAraComponent implements OnInit {
   videoDetayDialogAc(arsivVideo: IArsivVideo) {
     const arsivDetay = this.matDialog.open(ArsivDetayComponent, {
       height: '90%',
-      width: '85%',
-      maxWidth: '85%',
+      width: '80%',
+      maxWidth: '80%',
       data: { video: arsivVideo }
     });
   }

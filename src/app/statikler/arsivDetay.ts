@@ -8,7 +8,7 @@ export const arsivDetayCeviri = {
     videoBenzer: 'Benzer Videolar',
     aciklama: 'Açıklaması',
     cozunurluk: 'Çözünürlük',
-    telif: 'Telif Sahibi',
+    telif: 'Fotoğrafçı',
     dosyaId: 'Dosya ID',
     goruntule: 'Görüntüle'
   },
@@ -20,7 +20,7 @@ export const arsivDetayCeviri = {
     videoAciklama: 'Video Description',
     videoBenzer: 'Similar Videos',
     cozunurluk: 'Resolution',
-    telif: 'Copyright Holder',
+    telif: 'Photographer',
     dosyaId: 'File ID',
     goruntule: 'View Image'
   }

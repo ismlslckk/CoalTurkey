@@ -1,12 +1,12 @@
 <section class="image-decription-container">
-  <div class="container">
-    <div class="row" *ngIf="arsivGorselDataSource">
-      <div class="span6">
+  <div *ngIf="arsivGorselDataSource">
+    <div class="col-md-12">
+      <div class="col-md-6">
         <figure class="text-center">
           <img [src]="gorsel.GorselUrl" alt="img" style="height: 360px;" />
         </figure>
       </div>
-      <div class="span6">
+      <div class="col-md-5">
         <div class="item-description">
           <h5 class="title">{{ arsivDetayCeviri[seciliDil].dosyaId }} - {{ gorsel[seciliDil].OrtakId }}</h5>
           <table class="table table-hover">
@@ -115,16 +115,21 @@
             <h4 class="title">{{ arsivDetayCeviri[seciliDil].telif }}</h4>
             <p>{{ gorsel.TelifSahip.Ad }} {{ gorsel.TelifSahip.Soyad }}</p>
           </div>
+          <div class="item-license" style="margin-top: 15px;">
+            <img width="200" src="/assets/arsiv/img/lisans.jpg" />
+          </div>
         </div>
       </div>
     </div>
-    <div class="row" *ngIf="arsivVideoDataSource">
-      <div class="span6">
+  </div>
+  <div *ngIf="arsivVideoDataSource">
+    <div class="col-md-12">
+      <div class="col-md-6">
         <figure class="text-center">
           <video style="width: 100%;" src="{{ video.VideoUrl }}" controls></video>
         </figure>
       </div>
-      <div class="span6">
+      <div class="col-md-5">
         <div class="item-description">
           <h5 class="title">{{ arsivDetayCeviri[seciliDil].dosyaId }} - {{ video[seciliDil].OrtakId }}</h5>
           <div class="item-license" style="margin-top: 30px;">
@@ -149,26 +154,21 @@
   </div>
 </section>
 <section class="top-images">
-  <div class="container">
-    <div class="row">
-      <div class="span12">
-        <h4 class="title" *ngIf="gorsel">{{ arsivDetayCeviri[seciliDil].gorselBenzer }}</h4>
-        <h4 class="title" *ngIf="video">{{ arsivDetayCeviri[seciliDil].videoBenzer }}</h4>
-      </div>
-    </div>
+  <div class="col-md-12">
+    <h4 class="title" *ngIf="gorsel" style="margin-left: 12px">{{ arsivDetayCeviri[seciliDil].gorselBenzer }}</h4>
+    <h4 class="title" *ngIf="video" style="margin-left: 12px">{{ arsivDetayCeviri[seciliDil].videoBenzer }}</h4>
     <div class="images-container v3">
-      <div class="row" *ngIf="arsivGorselDataSource">
-        <cdk-virtual-scroll-viewport itemSize="100" class="arsiv-scrollbar" style="height: 220px;">
+      <div *ngIf="arsivGorselDataSource">
+        <cdk-virtual-scroll-viewport itemSize="100" class="arsiv-scrollbar">
           <li *cdkVirtualFor="let arsivGorsel of arsivGorselDataSource">
             <div *ngIf="arsivGorsel">
-              <div class="span3">
+              <div class="col-md-2">
                 <figure class="top-img" style="margin-top: 10px;">
                   <img class="arsiv-gorsel" [src]="arsivGorsel.GorselUrl" alt="{{ arsivGorsel[seciliDil].GorselAd }}" />
 
                   <figcaption class="img-meta">
                     <div class="row-fluid">
                       <div class="span8">
-                        <a href="#" class="img-id">{{ arsivGorsel[seciliDil].OrtakId }}</a>
                         <a href="#" class="img-tags">{{ arsivGorsel[seciliDil].GorselAd }}</a>
                       </div>
                       <div class="span4">

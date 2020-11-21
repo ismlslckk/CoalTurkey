@@ -18,8 +18,13 @@ export class HeaderComponent implements OnInit {
   etiketler: IEtiket[];
   etiketAlanlar = { text: 'Ad', value: 'OrtakId' };
   seciliDil: string;
+  aramaAktif: boolean;
 
-  constructor(private arsivService: ArsivService, private dilService: DilService, private router: Router) {}
+  constructor(private arsivService: ArsivService, private dilService: DilService, private router: Router) {
+    this.arsivService.aramaAktif.subscribe(aramaAktif => {
+      this.aramaAktif = aramaAktif;
+    });
+  }
 
   ngOnInit() {
     this.dilService.seciliDil.subscribe(seciliDil => {

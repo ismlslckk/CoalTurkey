@@ -326,7 +326,7 @@ a:focus,
 
 .main-pictures-cotainer {
   height: 720px;
-  background: #ffffff url("http://admin.turkiyedekomur.org/assets/arsiv.png") repeat-x;
+  background: #ffffff url("https://admin.turkiyedekomur.org/assets/arsiv.png") repeat-x;
 }
 
 .main-pictures-cotainer .content-text.v2 {
@@ -1297,6 +1297,12 @@ footer .footer-widgets .subscribe :-ms-input-placeholder {
 .subfooter .footer-logo {
   display: block;
   margin-top: 5px;
+}
+
+@media screen and (max-width: 720px) {
+  .subfooter .footer-logo img {
+    width: 100px;
+  }
 }
 
 .subfooter p.copy {

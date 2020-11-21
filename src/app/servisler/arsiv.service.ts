@@ -18,6 +18,7 @@ export class ArsivService {
   seciliEtiketlerId = new BehaviorSubject<number[]>(null);
 
   seciliArsivTip = new BehaviorSubject<string>('gorsel');
+  aramaAktif = new BehaviorSubject<boolean>(false);
 
   constructor(private httpClient: HttpClient) {}
 

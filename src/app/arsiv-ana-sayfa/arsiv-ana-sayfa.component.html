@@ -2,6 +2,10 @@
   <div class="container">
     <div class="row" style="margin-top: 200px;">
       <div class="span6 offset3">
+        <h1 class="text-center" style="color: #ffffff; font-weight: bolder">
+          {{ etiketAraText[seciliDil].gorselArsivBaslik }}
+        </h1>
+        <p class="text-center" style="color: #ffffff">{{ etiketAraText[seciliDil].gorselArsivAciklama }}</p>
         <div class="search-form">
           <form (submit)="etiketAraFormSubmit()" class="dropdown-search-box">
             <ejs-multiselect
@@ -12,25 +16,12 @@
               [(value)]="seciliEtiketler"
               style="padding: 10px;"
             ></ejs-multiselect>
-            <!--            <div class="input-append">-->
-            <!--              <input-->
-            <!--                class="span5 seachPlaceholder"-->
-            <!--                id="appendedInputButton"-->
-            <!--                type="text"-->
-            <!--                placeholder="Enter Keywords "-->
-            <!--                name="searchItems"-->
-            <!--                (keypress)="etiketAramaInputChanged($event)"-->
-            <!--                [(ngModel)]="etiketAramaParam"-->
-            <!--              />-->
-            <!--              <button class="btn" type="submit"><i class="icon-search icon-2x"></i></button>-->
-            <!--            </div>-->
-            <!--            <div class="tag-div">-->
-            <!--              <ng-container *ngFor="let etiket of etiketAramaParamArray; let i = index">-->
-            <!--                <button [ngClass]="{ 'tag-margin': i !== 0 }" class="btn tag-btn">-->
-            <!--                  {{ etiket }} <i class="icon-remove alert-danger" (click)="arrayEtiketSil(etiket)"></i>-->
-            <!--                </button>-->
-            <!--              </ng-container>-->
-            <!--            </div>-->
+            <button
+              class="btn"
+              style="position: relative;float: right;bottom: 52px;left: -6px; background: #ffffff; border: none; font-size: large"
+            >
+              <i class="icon icon-search"></i>
+            </button>
           </form>
         </div>
       </div>
@@ -42,7 +33,7 @@
     <div class="images-container">
       <div class="row" *ngIf="arsivGorselDataSource">
         <cdk-virtual-scroll-viewport
-          itemSize="100"
+          itemSize="12"
           class="arsiv-scrollbar"
           (scrolledIndexChange)="sayfaDegistir($event)"
         >
@@ -55,7 +46,6 @@
                   <figcaption class="img-meta">
                     <div class="row-fluid">
                       <div class="span8">
-                        <a href="#" class="img-id">{{ arsivGorsel[seciliDil].OrtakId }}</a>
                         <a href="#" class="img-tags" *ngIf="arsivGorsel[seciliDil]">{{
                           arsivGorsel[seciliDil].GorselAd
                         }}</a>
@@ -108,7 +98,7 @@
       </div>
       <div class="row" *ngIf="arsivVideoDataSource">
         <cdk-virtual-scroll-viewport
-          itemSize="100"
+          itemSize="12"
           class="arsiv-scrollbar"
           (scrolledIndexChange)="sayfaDegistir($event)"
         >
@@ -121,7 +111,6 @@
                   <figcaption class="img-meta">
                     <div class="row-fluid">
                       <div class="span8">
-                        <a href="#" class="img-id">{{ arsivVideo[seciliDil].OrtakId }}</a>
                         <a href="#" class="img-tags" *ngIf="arsivVideo[seciliDil]">{{
                           arsivVideo[seciliDil].VideoAd
                         }}</a>
