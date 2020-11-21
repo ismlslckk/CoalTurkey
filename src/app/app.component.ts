@@ -12,7 +12,7 @@ export class AppComponent {
 
   constructor(private dilService: DilService) {
     if (document.location.hostname.includes('.com')) {
-      window.location.href = `${document.location.hostname.split('.com')[0]}.org`;
+      window.location.href = `https://${document.location.hostname.split('.com')[0]}.org`;
     } else {
       if (document.location.hostname.includes('coalinturkey')) {
         this.dilService.seciliDil.next('Ingilizce');
