@@ -4,7 +4,7 @@
   </div>
 </section>
 <section *ngIf="!tip">
-  <div class="col-md-12">
-    Kullanıcı Sözleşmesi
+  <div class="col-md-12" *ngIf="seciliDil" [innerHTML]="kullaniciSozlesme[seciliDil]">
+
   </div>
 </section>
