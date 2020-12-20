@@ -30,14 +30,14 @@ export class ArsivAnaSayfaComponent implements OnInit {
       gorselArsivBaslik: 'Görsel Arşiv',
       gorselArsivAciklama:
         'Basın, sivil toplum kuruluşları ve yerel hareketler için yüksek çözünürlüklü kömürlü termik santral fotoğraf ve videolar',
-      gorsel: 'Görsellerde ara',
-      video: 'Videolarda ara'
+      gorsel: 'Etiketler arasında ara',
+      video: 'Etiketler arasında ara'
     },
     Ingilizce: {
       gorselArsivBaslik: 'Visual Archive',
       gorselArsivAciklama: 'High resolution coal power plant photos and videos for the press, NGOs and local movements',
-      gorsel: 'Search in Images',
-      video: 'Search in Videos'
+      gorsel: 'Search between tags',
+      video: 'Search between tags'
     }
   };
 

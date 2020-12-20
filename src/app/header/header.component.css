@@ -1,0 +1,6 @@
+        @media only screen and (max-width: 600px) {
+            .mobilNavbar {
+                margin-right: unset;
+                margin-left: unset;
+            }
+        }

@@ -1,17 +1,16 @@
-<div class="navbar navbar-inverse-blue navbar-fixed-top">
-  <div class="navbar-inner navbar-custom" style="height: 100px;">
-    <div class="btn-group f-right" style="margin-right: 20px;">
-      <button class="btn" #seciliDilButon>Türkçe</button>
-      <button class="btn dropdown-toggle" data-toggle="dropdown">
+<div class="navbar navbar-inverse-blue navbar-fixed-top mobilNavbar" style="width: 100%;">
+    <div class="navbar-inner navbar-custom" style="height: 100px;">
+        <div class="btn-group f-right" style="margin-right: 20px;">
+            <button class="btn" #seciliDilButon>Türkçe</button>
+            <button class="btn dropdown-toggle" data-toggle="dropdown">
         <span class="caret"></span>
       </button>
-      <ul class="dropdown-menu" id="filters">
-        <li>
-          <a (click)="dilDegistir('Turkce', $event)" class="{{ seciliDil === 'Turkce' ? 'selected' : null }}">Türkçe</a>
-        </li>
-        <li>
-          <a (click)="dilDegistir('Ingilizce', $event)" class="{{ seciliDil === 'Ingilizce' ? 'selected' : null }}"
-            >English</a
+            <ul class="dropdown-menu" id="filters">
+                <li>
+                    <a (click)="dilDegistir('Turkce', $event)" class="{{ seciliDil === 'Turkce' ? 'selected' : null }}">Türkçe</a>
+                </li>
+                <li>
+                    <a (click)="dilDegistir('Ingilizce', $event)" class="{{ seciliDil === 'Ingilizce' ? 'selected' : null }}">English</a
           >
         </li>
       </ul>
@@ -34,51 +33,49 @@
           alt="coal in turkey"
         />
       </a>
-      <div class="container">
-        <div class="row">
-          <div class="span11">
-            <div class="tabbable">
-              <ul class="nav nav-tabs" style="margin-top: 65px;">
-                <li *ngIf="aramaAktif">
-                  <a routerLink="/"><i class="icon-home icon-large"></i></a>
-                </li>
-                <li class="active">
-                  <a href="#tab1" data-toggle="tab" (click)="seciliArsivTipDegistir('gorsel')"
-                    ><i class="icon-picture icon-large"></i
+                    <div class="container">
+                        <div class="row">
+                            <div class="span11">
+                                <div class="tabbable">
+                                    <ul class="nav nav-tabs" style="margin-top: 65px;">
+                                        <li *ngIf="aramaAktif">
+                                            <a routerLink="/"><i class="icon-home icon-large"></i></a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="#tab1" data-toggle="tab" (click)="seciliArsivTipDegistir('gorsel')"><i class="icon-picture icon-large"></i
                   ></a>
-                </li>
-                <li>
-                  <a href="#tab2" data-toggle="tab" (click)="seciliArsivTipDegistir('video')"
-                    ><i class="icon-facetime-video icon-large"></i
+                                        </li>
+                                        <li>
+                                            <a href="#tab2" data-toggle="tab" (click)="seciliArsivTipDegistir('video')"><i class="icon-facetime-video icon-large"></i
                   ></a>
-                </li>
-              </ul>
-            </div>
-          </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--      <div class="container navbar-tag-container" style="float: left;">-->
+                    <!--        <div class="tab-content">-->
+                    <!--          <div class="tab-pane active" id="tab1">-->
+                    <!--            <div class="row">-->
+                    <!--              <ul class="unstyled navbar-tag-list">-->
+                    <!--                <li *ngFor="let gorselEtiket of gorselEtiketler">-->
+                    <!--                  <a (click)="etiketSecildi(gorselEtiket[seciliDil].OrtakId)">{{ gorselEtiket[seciliDil].Ad }}</a>-->
+                    <!--                </li>-->
+                    <!--              </ul>-->
+                    <!--            </div>-->
+                    <!--          </div>-->
+                    <!--          <div class="tab-pane" id="tab2">-->
+                    <!--            <div class="row">-->
+                    <!--              <ul class="unstyled navbar-tag-list">-->
+                    <!--                <li *ngFor="let videoEtiket of videoEtiketler">-->
+                    <!--                  <a (click)="etiketSecildi(videoEtiket[seciliDil].OrtakId)">{{ videoEtiket[seciliDil].Ad }}</a>-->
+                    <!--                </li>-->
+                    <!--              </ul>-->
+                    <!--            </div>-->
+                    <!--          </div>-->
+                    <!--        </div>-->
+                    <!--      </div>-->
         </div>
-      </div>
-      <!--      <div class="container navbar-tag-container" style="float: left;">-->
-      <!--        <div class="tab-content">-->
-      <!--          <div class="tab-pane active" id="tab1">-->
-      <!--            <div class="row">-->
-      <!--              <ul class="unstyled navbar-tag-list">-->
-      <!--                <li *ngFor="let gorselEtiket of gorselEtiketler">-->
-      <!--                  <a (click)="etiketSecildi(gorselEtiket[seciliDil].OrtakId)">{{ gorselEtiket[seciliDil].Ad }}</a>-->
-      <!--                </li>-->
-      <!--              </ul>-->
-      <!--            </div>-->
-      <!--          </div>-->
-      <!--          <div class="tab-pane" id="tab2">-->
-      <!--            <div class="row">-->
-      <!--              <ul class="unstyled navbar-tag-list">-->
-      <!--                <li *ngFor="let videoEtiket of videoEtiketler">-->
-      <!--                  <a (click)="etiketSecildi(videoEtiket[seciliDil].OrtakId)">{{ videoEtiket[seciliDil].Ad }}</a>-->
-      <!--                </li>-->
-      <!--              </ul>-->
-      <!--            </div>-->
-      <!--          </div>-->
-      <!--        </div>-->
-      <!--      </div>-->
     </div>
-  </div>
 </div>

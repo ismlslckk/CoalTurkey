@@ -1,259 +1,211 @@
 <section class="image-decription-container">
-  <div *ngIf="arsivGorselDataSource">
-    <div class="col-md-12">
-      <div class="col-md-6">
-        <figure class="text-center">
-          <img [src]="gorsel.GorselUrl" alt="img" style="height: 360px;" />
-        </figure>
-      </div>
-      <div class="col-md-5">
-        <div class="item-description">
-          <h5 class="title">{{ arsivDetayCeviri[seciliDil].dosyaId }} - {{ gorsel[seciliDil].OrtakId }}</h5>
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>{{ arsivDetayCeviri[seciliDil].cozunurluk }}</th>
-                <th style="text-align: right">{{ arsivDetayCeviri[seciliDil].goruntule }}</th>
-              </tr>
-            </thead>
-            <tbody *ngIf="gorsel.Yatay">
-              <tr>
-                <td>1280 x 720</td>
-                <td>
-                  <a
-                    target="_blank"
-                    [href]="gorsel.GorselUrlYatay1280X720"
-                    class="btn download-btn f-right"
-                    type="button"
-                    download
-                    ><i class="icon-download"></i
+    <div *ngIf="arsivGorselDataSource">
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <figure class="text-center">
+                    <img [src]="gorsel.GorselUrl" alt="img" style="height: 360px;" />
+                </figure>
+            </div>
+            <div class="col-md-5">
+                <div class="item-description">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>{{ arsivDetayCeviri[seciliDil].cozunurluk }}</th>
+                                <th style="text-align: right">{{ arsivDetayCeviri[seciliDil].goruntule }}</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="gorsel.Yatay">
+                            <tr>
+                                <td>1280 x 720</td>
+                                <td>
+                                    <a target="_blank" [href]="gorsel.GorselUrlYatay1280X720" class="btn download-btn f-right" type="button" download><i class="icon-download"></i
                   ></a>
-                </td>
-              </tr>
-              <tr>
-                <td>2560 x 1440</td>
-                <td>
-                  <a
-                    target="_blank"
-                    [href]="gorsel.GorselUrlYatay2560X1440"
-                    class="btn download-btn f-right"
-                    type="button"
-                    download
-                    ><i class="icon-download"></i
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2560 x 1440</td>
+                                <td>
+                                    <a target="_blank" [href]="gorsel.GorselUrlYatay2560X1440" class="btn download-btn f-right" type="button" download><i class="icon-download"></i
                   ></a>
-                </td>
-              </tr>
-              <tr>
-                <td>3840 x 2160</td>
-                <td>
-                  <a
-                    target="_blank"
-                    [href]="gorsel.GorselUrlYatay3840X2160"
-                    class="btn download-btn f-right"
-                    type="button"
-                    download
-                    ><i class="icon-download"></i
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3840 x 2160</td>
+                                <td>
+                                    <a target="_blank" [href]="gorsel.GorselUrlYatay3840X2160" class="btn download-btn f-right" type="button" download><i class="icon-download"></i
                   ></a>
-                </td>
-              </tr>
-            </tbody>
-            <tbody *ngIf="!gorsel.Yatay">
-              <tr>
-                <td>720 x 1280</td>
-                <td>
-                  <a
-                    target="_blank"
-                    [href]="gorsel.GorselUrlDikey720X1280"
-                    class="btn download-btn f-right"
-                    type="button"
-                    download
-                    ><i class="icon-download"></i
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody *ngIf="!gorsel.Yatay">
+                            <tr>
+                                <td>720 x 1280</td>
+                                <td>
+                                    <a target="_blank" [href]="gorsel.GorselUrlDikey720X1280" class="btn download-btn f-right" type="button" download><i class="icon-download"></i
                   ></a>
-                </td>
-              </tr>
-              <tr>
-                <td>1440 x 2560</td>
-                <td>
-                  <a
-                    target="_blank"
-                    [href]="gorsel.GorselUrlDikey1440X2560"
-                    class="btn download-btn f-right"
-                    type="button"
-                    download
-                    ><i class="icon-download"></i
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1440 x 2560</td>
+                                <td>
+                                    <a target="_blank" [href]="gorsel.GorselUrlDikey1440X2560" class="btn download-btn f-right" type="button" download><i class="icon-download"></i
                   ></a>
-                </td>
-              </tr>
-              <tr>
-                <td>2160 x 3840</td>
-                <td>
-                  <a
-                    target="_blank"
-                    [href]="gorsel.GorselUrlDikey2160X3840"
-                    class="btn download-btn f-right"
-                    type="button"
-                    download
-                    ><i class="icon-download"></i
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2160 x 3840</td>
+                                <td>
+                                    <a target="_blank" [href]="gorsel.GorselUrlDikey2160X3840" class="btn download-btn f-right" type="button" download><i class="icon-download"></i
                   ></a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="item-license" style="margin-top: 15px;">
-            <h4 class="title">{{ arsivDetayCeviri[seciliDil].gorselAd }}</h4>
-            <p>
-              {{ gorsel[seciliDil].GorselAd }}
-            </p>
-          </div>
-          <div class="item-license" style="margin-top: 15px;">
-            <h4 class="title">{{ arsivDetayCeviri[seciliDil].gorselAciklama }}</h4>
-            <p>
-              {{ gorsel[seciliDil].GorselAciklama }}
-            </p>
-          </div>
-          <div class="item-license" style="margin-top: 15px;">
-            <h4 class="title">{{ arsivDetayCeviri[seciliDil].telif }}</h4>
-            <p>{{ gorsel.TelifSahip.Ad }} {{ gorsel.TelifSahip.Soyad }}</p>
-          </div>
-          <div class="item-license" style="margin-top: 15px;">
-            <img width="200" src="/assets/arsiv/img/lisans.jpg" />
-          </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="item-license" style="margin-top: 15px;">
+                        <h4 class="title">{{ arsivDetayCeviri[seciliDil].gorselAd }}</h4>
+                        <p>
+                            {{ gorsel[seciliDil].GorselAd }}
+                        </p>
+                    </div>
+                    <div class="item-license" style="margin-top: 15px;">
+                        <h4 class="title">{{ arsivDetayCeviri[seciliDil].gorselAciklama }}</h4>
+                        <p>
+                            {{ gorsel[seciliDil].GorselAciklama }}
+                        </p>
+                    </div>
+                    <div class="item-license" style="margin-top: 15px;">
+                        <h4 class="title">{{ arsivDetayCeviri[seciliDil].telif }}</h4>
+                        <p>{{ gorsel.TelifSahip.Ad }} {{ gorsel.TelifSahip.Soyad }}</p>
+                    </div>
+                    <div class="item-license" style="margin-top: 15px;">
+                        <img width="200" src="/assets/arsiv/img/lisans.jpg" />
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-  <div *ngIf="arsivVideoDataSource">
-    <div class="col-md-12">
-      <div class="col-md-6">
-        <figure class="text-center">
-          <video style="width: 100%;" src="{{ video.VideoUrl }}" controls></video>
-        </figure>
-      </div>
-      <div class="col-md-5">
-        <div class="item-description">
-          <h5 class="title">{{ arsivDetayCeviri[seciliDil].dosyaId }} - {{ video[seciliDil].OrtakId }}</h5>
-          <div class="item-license" style="margin-top: 30px;">
-            <h4 class="title">{{ arsivDetayCeviri[seciliDil].videoAd }}</h4>
-            <p>
-              {{ video[seciliDil].VideoAd }}
-            </p>
-          </div>
-          <div class="item-license" style="margin-top: 30px;">
-            <h4 class="title">{{ arsivDetayCeviri[seciliDil].videoAciklama }}</h4>
-            <p>
-              {{ video[seciliDil].VideoAciklama }}
-            </p>
-          </div>
-          <div class="item-license" style="margin-top: 30px;">
-            <h4 class="title">{{ arsivDetayCeviri[seciliDil].telifVideo }}</h4>
-            <p>{{ video.TelifSahip.Ad }} {{ video.TelifSahip.Soyad }}</p>
-          </div>
+    <div *ngIf="arsivVideoDataSource">
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <figure class="text-center">
+                    <video style="width: 100%;" src="{{ video.VideoUrl }}" controls></video>
+                </figure>
+            </div>
+            <div class="col-md-5">
+                <div class="item-description">
+                    <h5 class="title">{{ arsivDetayCeviri[seciliDil].dosyaId }} - {{ video[seciliDil].OrtakId }}</h5>
+                    <div class="item-license" style="margin-top: 30px;">
+                        <h4 class="title">{{ arsivDetayCeviri[seciliDil].videoAd }}</h4>
+                        <p>
+                            {{ video[seciliDil].VideoAd }}
+                        </p>
+                    </div>
+                    <div class="item-license" style="margin-top: 30px;">
+                        <h4 class="title">{{ arsivDetayCeviri[seciliDil].videoAciklama }}</h4>
+                        <p>
+                            {{ video[seciliDil].VideoAciklama }}
+                        </p>
+                    </div>
+                    <div class="item-license" style="margin-top: 30px;">
+                        <h4 class="title">{{ arsivDetayCeviri[seciliDil].telifVideo }}</h4>
+                        <p>{{ video.TelifSahip.Ad }} {{ video.TelifSahip.Soyad }}</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 <section class="top-images">
-  <div class="col-md-12">
-    <h4 class="title" *ngIf="gorsel" style="margin-left: 12px">{{ arsivDetayCeviri[seciliDil].gorselBenzer }}</h4>
-    <h4 class="title" *ngIf="video" style="margin-left: 12px">{{ arsivDetayCeviri[seciliDil].videoBenzer }}</h4>
-    <div class="images-container v3">
-      <div *ngIf="arsivGorselDataSource">
-        <cdk-virtual-scroll-viewport itemSize="100" class="arsiv-scrollbar">
-          <li *cdkVirtualFor="let arsivGorsel of arsivGorselDataSource">
-            <div *ngIf="arsivGorsel">
-              <div class="col-md-2">
-                <figure class="top-img" style="margin-top: 10px;">
-                  <img class="arsiv-gorsel" [src]="arsivGorsel.GorselUrl" alt="{{ arsivGorsel[seciliDil].GorselAd }}" />
+    <div class="col-md-12">
+        <h4 class="title" *ngIf="gorsel" style="margin-left: 12px">{{ arsivDetayCeviri[seciliDil].gorselBenzer }}</h4>
+        <h4 class="title" *ngIf="video" style="margin-left: 12px">{{ arsivDetayCeviri[seciliDil].videoBenzer }}</h4>
+        <div class="images-container v3">
+            <div *ngIf="arsivGorselDataSource">
+                <cdk-virtual-scroll-viewport itemSize="100" class="arsiv-scrollbar">
+                    <li *cdkVirtualFor="let arsivGorsel of arsivGorselDataSource">
+                        <div *ngIf="arsivGorsel">
+                            <div class="col-md-2">
+                                <figure class="top-img" style="margin-top: 10px;">
+                                    <img class="arsiv-gorsel" [src]="arsivGorsel.GorselUrl" alt="{{ arsivGorsel[seciliDil].GorselAd }}" />
 
-                  <figcaption class="img-meta">
-                    <div class="row-fluid">
-                      <div class="span8">
-                        <a href="#" class="img-tags">{{ arsivGorsel[seciliDil].GorselAd }}</a>
-                      </div>
-                      <div class="span4">
-                        <div class="dropdown">
-                          <a
-                            href="#"
-                            class="btn download-btn dropdown-toggle f-right"
-                            type="button"
-                            data-toggle="dropdown"
-                            ><i class="icon-download"></i
+                                    <figcaption class="img-meta">
+                                        <div class="row-fluid">
+                                            <div class="span8">
+                                                <a href="#" class="img-tags">{{ arsivGorsel[seciliDil].GorselAd }}</a>
+                                            </div>
+                                            <div class="span4">
+                                                <div class="dropdown">
+                                                    <a href="#" class="btn download-btn dropdown-toggle f-right" type="button" data-toggle="dropdown"><i class="icon-download"></i
                           ></a>
-                          <ul class="dropdown-menu" *ngIf="arsivGorsel.Yatay">
-                            <li>
-                              <a target="_blank" [href]="arsivGorsel.GorselUrlYatay1280X720">1280 x 720</a>
-                            </li>
-                            <li>
-                              <a target="_blank" [href]="arsivGorsel.GorselUrlYatay2560X1440">2560 x 1440</a>
-                            </li>
-                            <li>
-                              <a target="_blank" [href]="arsivGorsel.GorselUrlYatay3840X2160">3840 x 2160</a>
-                            </li>
-                          </ul>
-                          <ul class="dropdown-menu" *ngIf="!arsivGorsel.Yatay">
-                            <li>
-                              <a target="_blank" [href]="arsivGorsel.GorselUrlDikey720X1280">720 x 1280</a>
-                            </li>
-                            <li>
-                              <a target="_blank" [href]="arsivGorsel.GorselUrlDikey1440X2560">1440 x 2560</a>
-                            </li>
-                            <li>
-                              <a target="_blank" [href]="arsivGorsel.GorselUrlDikey2160X3840">2160 x 3840</a>
-                            </li>
-                          </ul>
+                                                    <ul class="dropdown-menu" *ngIf="arsivGorsel.Yatay">
+                                                        <li>
+                                                            <a target="_blank" [href]="arsivGorsel.GorselUrlYatay1280X720">1280 x 720</a>
+                                                        </li>
+                                                        <li>
+                                                            <a target="_blank" [href]="arsivGorsel.GorselUrlYatay2560X1440">2560 x 1440</a>
+                                                        </li>
+                                                        <li>
+                                                            <a target="_blank" [href]="arsivGorsel.GorselUrlYatay3840X2160">3840 x 2160</a>
+                                                        </li>
+                                                    </ul>
+                                                    <ul class="dropdown-menu" *ngIf="!arsivGorsel.Yatay">
+                                                        <li>
+                                                            <a target="_blank" [href]="arsivGorsel.GorselUrlDikey720X1280">720 x 1280</a>
+                                                        </li>
+                                                        <li>
+                                                            <a target="_blank" [href]="arsivGorsel.GorselUrlDikey1440X2560">1440 x 2560</a>
+                                                        </li>
+                                                        <li>
+                                                            <a target="_blank" [href]="arsivGorsel.GorselUrlDikey2160X3840">2160 x 3840</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </figcaption>
+
+                                    <div class="roll-over" (click)="gorselDetayGetir(arsivGorsel)"></div>
+                                </figure>
+                            </div>
                         </div>
-                      </div>
-                    </div>
-                  </figcaption>
-
-                  <div class="roll-over" (click)="gorselDetayGetir(arsivGorsel)"></div>
-                </figure>
-              </div>
+                        <div *ngIf="!arsivGorsel">
+                            Loading ...
+                        </div>
+                    </li>
+                </cdk-virtual-scroll-viewport>
             </div>
-            <div *ngIf="!arsivGorsel">
-              Loading ...
-            </div>
-          </li>
-        </cdk-virtual-scroll-viewport>
-      </div>
-      <div class="row" *ngIf="arsivVideoDataSource">
-        <cdk-virtual-scroll-viewport itemSize="100" class="arsiv-scrollbar" style="height: 220px;">
-          <li *cdkVirtualFor="let arsivVideo of arsivVideoDataSource">
-            <div *ngIf="arsivVideo">
-              <div class="span3">
-                <figure class="top-img" style="margin-top: 10px;">
-                  <video style="width: 100%;" src="{{ arsivVideo.VideoUrl }}"></video>
+            <div class="row" *ngIf="arsivVideoDataSource">
+                <cdk-virtual-scroll-viewport itemSize="100" class="arsiv-scrollbar" style="height: 220px;">
+                    <li *cdkVirtualFor="let arsivVideo of arsivVideoDataSource">
+                        <div *ngIf="arsivVideo">
+                            <div class="span3">
+                                <figure class="top-img" style="margin-top: 10px;">
+                                    <video style="width: 100%;" src="{{ arsivVideo.VideoUrl }}"></video>
 
-                  <figcaption class="img-meta">
-                    <div class="row-fluid">
-                      <div class="span8">
-                        <a href="#" class="img-id">{{ arsivVideo[seciliDil].OrtakId }}</a>
-                        <a href="#" class="img-tags">{{ arsivVideo[seciliDil].VideoAd }}</a>
-                      </div>
-                      <div class="span4">
-                        <a
-                          target="_blank"
-                          [href]="arsivVideo.VideoUrl"
-                          class="btn download-btn f-right"
-                          type="button"
-                          download
-                          ><i class="icon-download"></i
+                                    <figcaption class="img-meta">
+                                        <div class="row-fluid">
+                                            <div class="span8">
+                                                <a href="#" class="img-id">{{ arsivVideo[seciliDil].OrtakId }}</a>
+                                                <a href="#" class="img-tags">{{ arsivVideo[seciliDil].VideoAd }}</a>
+                                            </div>
+                                            <div class="span4">
+                                                <a target="_blank" [href]="arsivVideo.VideoUrl" class="btn download-btn f-right" type="button" download><i class="icon-download"></i
                         ></a>
-                      </div>
-                    </div>
-                  </figcaption>
+                                            </div>
+                                        </div>
+                                    </figcaption>
 
-                  <div class="roll-over" (click)="videoDetayGetir(arsivVideo)"></div>
-                </figure>
-              </div>
+                                    <div class="roll-over" (click)="videoDetayGetir(arsivVideo)"></div>
+                                </figure>
+                            </div>
+                        </div>
+                        <div *ngIf="!arsivVideo">
+                            Loading ...
+                        </div>
+                    </li>
+                </cdk-virtual-scroll-viewport>
             </div>
-            <div *ngIf="!arsivVideo">
-              Loading ...
-            </div>
-          </li>
-        </cdk-virtual-scroll-viewport>
-      </div>
+        </div>
     </div>
-  </div>
 </section>
