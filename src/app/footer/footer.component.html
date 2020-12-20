@@ -1,63 +1,61 @@
 <footer>
-  <div class="container">
-    <div class="row">
-      <div class="span4">
-        <div class="footer-widgets">
-          <h4 class="title">{{ footerText[seciliDil].komurBaslik }}</h4>
-          <p class="description">
-            {{ footerText[seciliDil].komurIcerik }}
-          </p>
-        </div>
-      </div>
-      <div class="span3">
-        <div class="footer-widgets">
-          <h4 class="title">{{ footerText[seciliDil].iletisimBaslik }}</h4>
-          <p class="description">
-            iletisim@ekosfer.org
-          </p>
-          <div class="row-fluid">
-            <div class="span10">
-              <p>Söğütlüçeşme Cad. Aliye Kadın İş Merkezi No:189/12 Kadıköy, İstanbul</p>
+    <div class="container">
+        <div class="row footerMobil">
+            <div class="span4">
+                <div class="footer-widgets">
+                    <h4 class="title">{{ footerText[seciliDil].komurBaslik }}</h4>
+                    <p class="description">
+                        {{ footerText[seciliDil].komurIcerik }}
+                    </p>
+                </div>
             </div>
-          </div>
+            <div class="span3">
+                <div class="footer-widgets">
+                    <h4 class="title">{{ footerText[seciliDil].iletisimBaslik }}</h4>
+                    <p class="description">
+                        iletisim@ekosfer.org
+                    </p>
+                    <div class="row-fluid">
+                        <div class="span10">
+                            <p>Söğütlüçeşme Cad. Aliye Kadın İş Merkezi No:189/12 Kadıköy, İstanbul</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="span3">
+                <div class="footer-widgets">
+                    <h4 class="title">{{ footerText[seciliDil].gizlilikBaslik }}</h4>
+                    <!--          <p>-->
+                    <!--            <a href="javascript: void(0)" (click)="sozlesmeAc(true)">{{ footerText[seciliDil].gizlilikSozlesme }}</a>-->
+                    <!--          </p>-->
+                    <p>
+                        <a href="javascript: void(0)" (click)="sozlesmeAc(false)">{{ footerText[seciliDil].kullaniciSozlesme }}</a>
+                    </p>
+                </div>
+            </div>
+            <div class="span2">
+                <div class="footer-widgets">
+                    <h4 class="title">{{ footerText[seciliDil].takipBaslik }}</h4>
+                    <p><a target="_blank" href="http://facebook.com/ekosferorg">Facebook</a></p>
+                    <p><a target="_blank" href="https://twitter.com/ekosferorg">Twitter</a></p>
+                    <p>
+                        <a target="_blank" href="https://www.instagram.com/ekosferorg/">Instagram</a>
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="span3">
-        <div class="footer-widgets">
-          <h4 class="title">{{ footerText[seciliDil].gizlilikBaslik }}</h4>
-<!--          <p>-->
-<!--            <a href="javascript: void(0)" (click)="sozlesmeAc(true)">{{ footerText[seciliDil].gizlilikSozlesme }}</a>-->
-<!--          </p>-->
-          <p>
-            <a href="javascript: void(0)" (click)="sozlesmeAc(false)">{{ footerText[seciliDil].kullaniciSozlesme }}</a>
-          </p>
-        </div>
-      </div>
-      <div class="span2">
-        <div class="footer-widgets">
-          <h4 class="title">{{ footerText[seciliDil].takipBaslik }}</h4>
-          <p><a target="_blank" href="http://facebook.com/ekosferorg">Facebook</a></p>
-          <p><a target="_blank" href="https://twitter.com/ekosferorg">Twitter</a></p>
-          <p>
-            <a target="_blank" href="https://www.instagram.com/ekosferorg/">Instagram</a>
-          </p>
-        </div>
-      </div>
     </div>
-  </div>
 </footer>
 
 <div class="subfooter">
-  <div class="container">
-    <div class="row">
-      <div class="span1">
-        <a target="_blank" href="https://ekosfer.org/" class="footer-logo"
-          ><img src="assets/arsiv/img/ekosfer-logo-yuksek.png" alt="ekosfer"
-        /></a>
-      </div>
-      <div class="span11">
-        <p class="copy">{{ footerText[seciliDil].copyright }}</p>
-      </div>
+    <div class="container">
+        <div class="row footerMobil">
+            <div class="span1">
+                <a target="_blank" href="https://ekosfer.org/" class="footer-logo"><img src="assets/arsiv/img/ekosfer-logo-yuksek.png" alt="ekosfer" /></a>
+            </div>
+            <div class="span11">
+                <p class="copy">{{ footerText[seciliDil].copyright }}</p>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
